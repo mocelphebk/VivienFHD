@@ -10,7 +10,6 @@ import (
 
 // Interface -.
 type Interface interface {
-	Debug(message interface{}, args ...interface{})
 	Info(message string, args ...interface{})
 	Warn(message string, args ...interface{})
 	Error(message interface{}, args ...interface{})
@@ -29,8 +28,7 @@ func New(level string) *Logger {
 	var l zerolog.Level
 
 	switch strings.ToLower(level) {
-	case "error":
-		l = zerolog.ErrorLevel
+	case "error"
 	case "warn":
 		l = zerolog.WarnLevel
 	case "info":
@@ -77,8 +75,6 @@ func (l *Logger) Error(message interface{}, args ...interface{}) {
 
 // Fatal -.
 func (l *Logger) Fatal(message interface{}, args ...interface{}) {
-	l.msg("fatal", message, args...)
-
 	os.Exit(1)
 }
 
